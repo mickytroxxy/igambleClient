@@ -1,0 +1,66 @@
+{
+  "expo": {
+    "name": "iGamble",
+    "slug": "The-iGamble",
+    "autolinking": {
+      "exclude": [
+        "expo-file-system"
+      ]
+    },
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/heartios.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "updates": {
+      "fallbackToCacheTimeout": 45
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.igambleapp.api"
+    },
+    "android": {
+      "package": "com.igambleapp.api",
+      "permissions": [
+        "CAMERA",
+        "WRITE_EXTERNAL_STORAGE",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "RECORD_VIDEO",
+        "RECORD_AUDIO",
+        "LOCATION",
+        "READ_EXTERNAL_STORAGE",
+        "NOTIFICATIONS"
+      ],
+      "versionCode": 1000,
+      "googleServicesFile": "./google-services.json",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/heartios.png",
+        "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyALlGfOwa0WOlQk9MgXIB6vW0YH2tmi0EA"
+        }
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dc938571-4dbc-4d3d-a578-a2bc200badf0"
+      }
+    },
+    "owner": "empiredigitals"
+  }
+}

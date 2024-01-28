@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "91491448952",
+    "project_id": "igamble-f05bc",
+    "storage_bucket": "igamble-f05bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91491448952:android:54adbd36143c37999d158d",
+        "android_client_info": {
+          "package_name": "com.igambleapp.api"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANGX-VyECDFL29GHP9xQ1h1vK9Y6X1NaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
