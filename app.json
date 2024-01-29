@@ -2,11 +2,11 @@
   "expo": {
     "name": "iGamble",
     "slug": "The-iGamble",
-    "autolinking": {
-      "exclude": [
-        "expo-file-system"
-      ]
-    },
+    // "autolinking": {
+    //   "exclude": [
+    //     "expo-file-system"
+    //   ]
+    // },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/heartios.png",

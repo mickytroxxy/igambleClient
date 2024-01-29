@@ -102,8 +102,6 @@ const usePlayer = () => {
     const handleSoundStatus = () => {
         if (sound) {
             sound?.setOnPlaybackStatusUpdate((status: any) => {
-                //dispatch(setTrackStatus(status));
-                //console.log(status)
                 if (status.didJustFinish) {
                     const existingIndex = selectedTracks.findIndex((track) => track?.id?.toString() === isPlaying?.trackId?.toString());
                     if (existingIndex !== -1) {
@@ -156,21 +154,19 @@ const usePlayer = () => {
     };
     const fetchById = async(track:DeezerTrack,showLoading:boolean,cb:(response:DeezerTrack) => void) => {
         if(!track?.trackUrl){
-            if(showLoading && !isPlaying.state){
-                setIsLoading(true);
-            }
             const trackName = await convertVideo(`${track?.artist?.name} ${track.title}`);
             if(trackName){
                 const trackUrl = BASE_URL+trackName;
                 cb({...track,trackUrl});
-                dispatch(setSelectedTracks(selectedTracks.map(item => item.id === track.id ? {...item,trackUrl} : {...item})));
+                //dispatch(setSelectedTracks(selectedTracks.map(item => item.id === track.id ? {...item,trackUrl} : {...item})));
             }else{
                 cb({...track,trackUrl:track.preview});
-                dispatch(setSelectedTracks(selectedTracks.map(item => item.id === track.id ? {...item,trackUrl:track.preview} : {...item})))
+                //dispatch(setSelectedTracks(selectedTracks.map(item => item.id === track.id ? {...item,trackUrl:track.preview} : {...item})))
                 showToast(`There was an error fetching ${track?.artist?.name} ${track.title}`)
             }
         }else{
-            return track;
+            console.log(track?.trackUrl,' ---->')
+            cb(track) ;
         }
     }
     useEffect(() => {

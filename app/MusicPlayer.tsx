@@ -6,31 +6,37 @@ import { colors } from "../constants/Colors";
 import Icon from "../components/ui/Icon";
 import usePlayer from "../hooks/usePlayer";
 import { currencyFormatter, showToast } from "../helpers/methods";
-import { useDispatch } from "react-redux";
-import { setSelectedTracks } from "../state/slices/music";
+import { DeezerTrack } from "../state/slices/music";
 
 
 const MusicPlayer = () => {
-    const {loadAudio, isPlaying, handlePlayPause, trackStatus, currentTrack, formatTime, getMp3FromVideos, updateTokenBalance, currentAmount, trackCost, isMainPlayer,fetchById,isLoading,setIsLoading} = usePlayer()
-    const handlePlayMusic = async () => {
-        fetchById(currentTrack,true,(response) => {
-            if(currentAmount >= trackCost){
-                if(!isPlaying.state){
-                    if(!isMainPlayer){
-                        loadAudio(response.trackUrl,response?.id,true,false);
-                        updateTokenBalance();
-                        setIsLoading(false);
-                        getMp3FromVideos();
-                    }
+    const {loadAudio, isPlaying, handlePlayPause, currentTrack, formatTime, getMp3FromVideos, updateTokenBalance, currentAmount, trackCost, isMainPlayer,fetchById} = usePlayer()
+    const [isLoading,setIsLoading] = useState(true);
+    const handlePlay = (track:DeezerTrack) => {
+        if(currentAmount >= trackCost){
+            if(!isPlaying.state){
+                if(!isMainPlayer){
+                    loadAudio(track.trackUrl,track?.id,true,false);
+                    updateTokenBalance();
+                    setIsLoading(false);
                 }
-            }else{
-                showToast("You have run out of funds to play music")
             }
-        });
+        }else{
+            showToast("You have run out of funds to play music")
+        }
     }
     useEffect(() => {
-        if(currentTrack){
-            handlePlayMusic()
+        if(currentTrack?.trackUrl){
+            handlePlay(currentTrack)
+        }else{
+            if(currentTrack){
+                if(!isPlaying.state && !isMainPlayer){
+                    setIsLoading(true);
+                }
+                fetchById(currentTrack,true,(response) => {
+                    handlePlay(response)
+                });
+            }
         }
     }, [currentTrack, isPlaying]);
     useEffect(() => {
@@ -57,10 +63,7 @@ const MusicPlayer = () => {
                 </View>
             </View>
             <View style={{ marginTop: 30 }}>
-                <Text style={{ fontFamily: 'fontBold', fontSize: 18, textAlign:'center' }}>{trackStatus && formatTime(currentTrack?.duration as any || 0)}</Text>
-            </View>
-            <View style={{marginTop:20}}>
-                
+                <Text style={{ fontFamily: 'fontBold', fontSize: 18, textAlign:'center' }}>{formatTime(currentTrack?.duration as any || 0)}</Text>
             </View>
             <View style={{ position: 'absolute', bottom: 50 }}>
                 {!isLoading ? 

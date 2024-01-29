@@ -35,7 +35,7 @@ export const BodySection = () =>{
                 </TouchableHighlight>
             </View>
             <View style={{padding:5}}>
-                <Text style={{fontFamily:'fontLight',fontSize:13,color:'#353434',textAlign:'center'}}>Click The Start Button To Enter Your Gambling Token. Wish You Luck</Text>
+                <Text style={{fontFamily:'fontBold',fontSize:15,color:'#353434',textAlign:'center'}}>Click The Start Button To Enter Your Token. You Can Gamble Or Play Music With The Same Token</Text>
             </View>
             <View style={{alignItems:'center',marginTop:30,flexDirection:'row',alignSelf:'center'}}>
                 <TouchableOpacity onPress={() => {
